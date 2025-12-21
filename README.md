@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Web Corporativa Industrial (React + Vite)
 
 Plantilla profesional para una web corporativa enfocada en conversión: presencia de marca, portafolio y formularios (contacto / cotización).
@@ -182,3 +183,20 @@ industrial-web-template/
 ## 10) Licencia
 
 Uso interno / privado de la marca.
+=======
+# EMPRESA DE SOLDADURA Y METALMECÁNICA INDUSTRIAL
+## Documentación estratégica y técnica del proyecto
+
+Este repositorio documenta la creación, estructura y ejecución de una empresa
+de servicios industriales especializada en soldadura y metalmecánica, con
+enfoque exclusivo en el sector empresarial (B2B).
+
+El objetivo de esta documentación es:
+- Alinear a los socios en una visión común
+- Explicar claramente cómo funciona la empresa
+- Servir como guía de ejecución y crecimiento
+- Evitar decisiones improvisadas o desordenadas
+
+Este repositorio no es únicamente técnico. Está diseñado para ser entendido
+por cualquier socio, independientemente de su formación profesional.
+>>>>>>> c730d359b9a63aa0e4b1b39a1866dc5e01980a15

@@ -1,10 +1,7 @@
-:root{
-  --brand-primary: rgb(12, 32, 54);
-  --brand-secondary: rgb(18, 64, 96);
-  --brand-accent: rgb(220, 150, 60);
-  --brand-bg: rgb(245, 247, 250);
-  --brand-surface: rgb(255, 255, 255);
-  --brand-text: rgb(15, 23, 42);
-  --brand-muted: rgb(100, 116, 139);
-  --brand-border: rgb(226, 232, 240);
+:root {
+  --brand-primary: #223348; /* Header, Footer, Títulos principales */
+  --brand-secondary: #CDD0D2; /* Fondos claros, secciones, separadores */
+  --brand-accent: #EB6726; /* Botones, enlaces importantes */
+  --brand-bg: #FFFFFF; /* Fondo blanco */
+  --brand-text: #212121; /* Texto principal */
 }
