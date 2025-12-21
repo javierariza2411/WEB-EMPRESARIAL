@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="48" viewBox="0 0 220 48">
+  <rect x="0" y="6" width="40" height="36" rx="8" fill="#0C2036"/>
+  <path d="M12 32 L20 16 L28 32 Z" fill="#DC963C"/>
+  <text x="52" y="32" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#0C2036">INDUSTRIAL</text>
+</svg>
