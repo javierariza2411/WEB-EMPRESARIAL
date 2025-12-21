@@ -274,3 +274,241 @@ a:hover{ text-decoration: underline; }
   margin-top: 48px;
 }
 
+/* Swiper fix para layouts con containers/cards */
+.swiper{
+  width: 100%;
+}
+
+.swiper-wrapper{
+  align-items: stretch;
+}
+
+.swiper-slide{
+  width: 100%;
+}
+
+.swiper-slide img{
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+@media (max-width: 900px){
+  .swiper-slide img{ height: 320px; }
+}
+
+
+/* =========================
+   FOOTER INDUSTRIAL (PALETA SOLIDUM)
+   Principal: #223348
+   Secundario: #CDD0D2
+   Acento: #EB6726
+   Texto: #212121
+   ========================= */
+
+:root{
+  --c-primary: #223348;
+  --c-secondary: #CDD0D2;
+  --c-accent: #EB6726;
+  --c-text: #212121;
+  --c-white: #ffffff;
+}
+
+.siteFooter{
+  margin-top: 80px;
+}
+
+/* CTA */
+.footerCta{
+  background: var(--c-secondary);
+  padding: 34px 0;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.footerCtaGrid{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.footerCtaKicker{
+  font-size: 12px;
+  letter-spacing: .25em;
+  margin: 0;
+  color: rgba(33,33,33,.75);
+}
+
+.footerCtaText{
+  margin-top: 8px;
+  color: rgba(33,33,33,.78);
+  max-width: 760px;
+}
+
+.footerCtaAction{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.footerCtaBtn{
+  background: var(--c-accent);
+  color: var(--c-white);
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14);
+}
+
+.footerCtaBtn:hover{
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+
+.footerCtaBtn:active{
+  transform: translateY(0);
+}
+
+/* INFO STRIP */
+.footerInfo{
+  background: var(--c-primary);
+}
+
+.footerInfoGrid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.footerInfoCol{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 28px;
+  color: var(--c-white);
+}
+
+/* Puedes dejar las 3 iguales o alternar ligeramente */
+.footerInfoColA{ background: #1e2e41; } /* un poco más oscuro */
+.footerInfoColB{ background: var(--c-primary); }
+.footerInfoColC{ background: #1e2e41; }
+
+.footerInfoIcon{
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+}
+
+.footerInfoLabel{
+  font-size: 12px;
+  letter-spacing: .18em;
+  opacity: .92;
+}
+
+.footerInfoValue{
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.footerInfoSmall{
+  margin-top: 6px;
+  opacity: .86;
+}
+
+/* FOOTER OSCURO (base) */
+.footerBottom{
+  background: #182438; /* más profundo que primary para contraste */
+  padding: 38px 0;
+  color: rgba(255,255,255,.86);
+}
+
+.footerBottomInner{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.footerBrandName{
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
+.footerBrandSlogan{
+  margin-top: 6px;
+  opacity: .85;
+}
+
+.footerMeta{
+  text-align: right;
+  font-size: 14px;
+}
+
+.footerMeta a{
+  color: rgba(255,255,255,.86);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+}
+
+.footerMeta a:hover{
+  border-bottom-color: rgba(255,255,255,.6);
+}
+
+.footerMetaLinks{
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .footerCtaGrid{
+    grid-template-columns: 1fr;
+  }
+
+  .footerCtaAction{
+    justify-content:flex-start;
+  }
+
+  .footerInfoGrid{
+    grid-template-columns: 1fr;
+  }
+
+  .footerBottomInner{
+    grid-template-columns: 1fr;
+  }
+
+  .footerMeta{
+    text-align: left;
+  }
+}
+
+
+/* ============================= */
+/* BOTONES SOBRE HERO OSCURO     */
+/* ============================= */
+.heroGuide .btn-secondary,
+.heroGuide .btn-outline,
+.heroGuide a.btn-secondary,
+.heroGuide a.btn-outline {
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+}
+
+.heroGuide .btn-secondary:hover,
+.heroGuide .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+
+

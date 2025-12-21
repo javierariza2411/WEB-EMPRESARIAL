@@ -8,10 +8,39 @@ import { services } from "../data/services";
 import { projects } from "../data/projects";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
+import { useEffect, useRef } from "react";
+
+
 import "swiper/css";
+import "swiper/css/pagination";
+
 
 export function Home() {
+
+    const swiperRef = useRef(null);
+
+  useEffect(() => {
+    // intenta arrancar autoplay aunque el navegador/OS quiera reducir animaciones
+    const s = swiperRef.current;
+    if (!s) return;
+
+    // pequeño delay para asegurar que ya montó el DOM
+    const t = setTimeout(() => {
+      try {
+        s.update();
+        if (s.autoplay && typeof s.autoplay.start === "function") {
+          s.autoplay.start();
+        }
+      } catch (e) {
+        // no hacemos nada; solo evita que se rompa
+      }
+    }, 300);
+
+    return () => clearTimeout(t);
+  }, []);
+
+
   return (
     <PageShell hideIntro>
       {/* HERO MODERNO (ÚNICO) */}
@@ -47,37 +76,59 @@ export function Home() {
   aria-label="Galería destacada"
   style={{ marginTop: 64, opacity: 0.9 }}
 >
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={1}
-          autoplay={{ delay: 3000 }}
-          modules={[Autoplay]}
-          style={{ marginBottom: 32 }}
-        >
-          <SwiperSlide>
-            <img
-              src="/slider1.png"
-              alt="Proceso de soldadura industrial"
-              style={{ width: "100%", borderRadius: 10, display: "block" }}
-            />
-          </SwiperSlide>
+   <Swiper
+  modules={[Autoplay, Pagination]}
+  spaceBetween={24}
+  slidesPerView={1}
+  loop={true}
+  speed={800}
+  init={true}
+  onSwiper={(swiper) => {
+    swiperRef.current = swiper;
 
-          <SwiperSlide>
-            <img
-              src="/slider2.png"
-              alt="Fabricación de estructuras metálicas"
-              style={{ width: "100%", borderRadius: 10, display: "block" }}
-            />
-          </SwiperSlide>
+    // Arranque inmediato también (por si useEffect demora)
+    setTimeout(() => {
+      try {
+        swiper.update();
+        swiper.autoplay?.start?.();
+      } catch (e) {}
+    }, 200);
+  }}
+  autoplay={{
+    delay: 800,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+  }}
+  pagination={{ clickable: true }}
+  style={{ marginBottom: 32, width: "100%" }}
+>
 
-          <SwiperSlide>
-            <img
-              src="/slider3.png"
-              alt="Montaje y mantenimiento industrial"
-              style={{ width: "100%", borderRadius: 10, display: "block" }}
-            />
-          </SwiperSlide>
-        </Swiper>
+
+  <SwiperSlide>
+    <img
+      src="/brand/slider1.png"
+      alt="Proceso de soldadura industrial"
+      style={{ width: "100%", borderRadius: 10, display: "block" }}
+    />
+  </SwiperSlide>
+
+  <SwiperSlide>
+    <img
+      src="/brand/slider2.png"
+      alt="Fabricación de estructuras metálicas"
+      style={{ width: "100%", borderRadius: 10, display: "block" }}
+    />
+  </SwiperSlide>
+
+  <SwiperSlide>
+    <img
+      src="/brand/slider3.png"
+      alt="Montaje y mantenimiento industrial"
+      style={{ width: "100%", borderRadius: 10, display: "block" }}
+    />
+  </SwiperSlide>
+</Swiper>
+
       </section>
 
       {/* KPIs */}
