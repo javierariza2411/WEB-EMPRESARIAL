@@ -5,7 +5,7 @@ export function PageShell({
   subtitle,
   badges = [],
   hideIntro = false,
-  children
+  children,
 }) {
   const hasIntro = Boolean(title || subtitle || (badges && badges.length > 0));
 
