@@ -1,38 +1,33 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
-
-async function postJson(url, payload){
+async function postJson(url, payload) {
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
   });
-  if(!res.ok){
-    const txt = await res.text().catch(() => "");
-    throw new Error(txt || "No fue posible enviar la solicitud.");
-  }
-  return res.json().catch(() => ({}));
-}
 
+  // Intentar leer respuesta (json o texto)
+  const contentType = res.headers.get("content-type") || "";
+  const data = contentType.includes("application/json")
+    ? await res.json().catch(() => ({}))
+    : await res.text().catch(() => "");
+
+  if (!res.ok) {
+    const msg =
+      (typeof data === "string" && data) ||
+      (data && data.error) ||
+      `Error HTTP ${res.status}`;
+    throw new Error(msg);
+  }
+
+  return data;
+}
 
 /**
- * En desarrollo (sin backend), esta función simula envío.
- * Cuando haya backend, habilita API_BASE_URL y descomenta el fetch real.
+ * kind:
+ *  - "quote"   -> /api/leads/quote
+ *  - "contact" -> /api/leads/contact
  */
-async function postJson(url, payload){
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
-  if(!res.ok){
-    const txt = await res.text().catch(() => "");
-    throw new Error(txt || "No fue posible enviar la solicitud.");
-  }
-  return res.json().catch(() => ({}));
-}
-
-export async function submitLead(kind, payload){
+export async function submitLead(kind, payload) {
   const endpoint = kind === "quote" ? "/api/leads/quote" : "/api/leads/contact";
   return postJson(endpoint, payload);
 }
-
