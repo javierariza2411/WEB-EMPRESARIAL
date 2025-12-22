@@ -50,8 +50,8 @@ export function Quote(){
 
     try{
       setStatus({ type: "loading", message: "Enviando solicitud..." });
-      await submitLead("quote", { ...form, createdAt: new Date().toISOString() });
-      setStatus({ type: "success", message: "Solicitud enviada. Te contactaremos con los siguientes pasos." });
+      const result = await submitLead("quote", form);
+      setStatus({ type: "success", message: `Solicitud enviada. ID: ${result.quoteId}` });
       setForm({ name:"", company:"", email:"", phone:"", service:"", city:"", details:"" });
       setErrors({});
     }catch(err){

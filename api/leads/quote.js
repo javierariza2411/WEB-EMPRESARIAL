@@ -31,9 +31,22 @@ export default async function handler(req, res) {
   }
 
   try {
-    const {
-      name, company, email, phone, service, city, details
-    } = req.body || {};
+
+
+    let body = req.body;
+
+    if (!body) {
+    const chunks = [];
+    for await (const chunk of req) chunks.push(chunk);
+    try {
+        body = JSON.parse(Buffer.concat(chunks).toString("utf8"));
+    } catch {
+        body = {};
+    }
+    }
+
+    const { name, company, email, phone, service, city, details } = body || {};
+
 
     // Validación server-side (mínima)
     if (!name || String(name).trim().length < 3) return res.status(400).json({ error: "Nombre inválido" });
