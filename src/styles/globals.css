@@ -147,7 +147,7 @@ a:hover{ text-decoration: underline; }
 
 .btn-outline{
   background: transparent;
-  color: var(--brand-primary);
+  color: var(--color-bg);
   border-color: var(--brand-border);
 }
 .btn-outline:hover{ background: rgba(12, 32, 54, 0.06); }
@@ -238,6 +238,68 @@ a:hover{ text-decoration: underline; }
   text-decoration: none;
 }
 .nav-cta{ display: flex; gap: 10px; align-items: center; }
+
+/* Estilos para el menú responsive */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.navbar .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links.open {
+  display: block;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-primary);
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar .nav-cta {
+  display: flex;
+  gap: 10px;
+}
+
+/* Estilos específicos para dispositivos móviles */
+@media (max-width: 768px) {
+  .navbar .menu-toggle {
+    display: block;
+  }
+
+  .navbar .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar .nav-cta {
+    display: none;
+  }
+}
 
 .footer{
   border-top: 1px solid var(--brand-border);
