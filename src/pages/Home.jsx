@@ -3,6 +3,7 @@ import { PageShell } from "../components/layout/PageShell";
 import { Card } from "../components/ui/Card";
 import { Button } from "../components/ui/Button";
 import { SectionTitle } from "../components/ui/SectionTitle";
+import { WhatsAppFloat } from "../components/ui/WhatsAppFloat";
 
 import { services } from "../data/services";
 import { projects } from "../data/projects";
@@ -232,6 +233,9 @@ export function Home() {
           </div>
         </Card>
       </section>
+
+      {/* Botón flotante de WhatsApp */}
+      <WhatsAppFloat phone="573001234567" message="Hola, vengo desde la web y quiero una cotización." />
     </PageShell>
   );
 }
