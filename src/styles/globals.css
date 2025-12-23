@@ -783,6 +783,184 @@ a:hover{ text-decoration: underline; }
   padding-bottom: 8px;
 }
 
+/* Servicios – grid visual (propio) */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .svc-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+
+.svc-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10; /* CLAVE */
+  min-height: 300px;
+}
+
+
+.svc-media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+
+@media (max-width: 768px) {
+  .svc-card {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+
+.svc-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(7,18,30,0.15), rgba(7,18,30,0.85) 70%),
+    radial-gradient(600px 220px at 30% 20%, rgba(255,255,255,0.12), transparent 60%);
+}
+
+.svc-content{
+  position:relative;
+  z-index:1;
+  padding: 18px 18px 16px;
+  color: rgba(255,255,255,0.92);
+  display:flex;
+  flex-direction:column;
+  gap: 8px;
+}
+
+.svc-kicker{
+  margin:0;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .8;
+}
+
+.svc-title{
+  margin:0;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.svc-desc{
+  margin:0;
+  opacity: .85;
+  font-size: 14px;
+  line-height: 1.45;
+  max-width: 52ch;
+}
+
+.svc-actions{
+  margin-top: 10px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+.svc-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0f1f2f;
+  min-height: 260px;
+}
+
+.svc-media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: contrast(1.05) saturate(1) brightness(0.95);
+  transition: filter 0.3s ease;}
+
+
+/* Overlay PRO */
+.svc-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(5, 15, 25, 0.85) 0%,
+    rgba(5, 15, 25, 0.55) 45%,
+    rgba(5, 15, 25, 0.25) 100%
+  );
+}
+
+
+
+.svc-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+/* Placa visual */
+.svc-content::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 70%;
+  background: linear-gradient(
+    to top,
+    rgba(8, 18, 28, 0.95),
+    rgba(8, 18, 28, 0.7),
+    transparent
+  );
+  z-index: -1;
+}
+
+.svc-kicker {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 6px;
+}
+
+.svc-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.svc-desc {
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 95%;
+}
+
+
+.svc-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.svc-actions .btn-outline {
+  border-color: rgba(255,255,255,0.6);
+  color: #fff;
+}
+
 
 
 
