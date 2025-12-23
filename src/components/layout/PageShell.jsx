@@ -13,26 +13,25 @@ export function PageShell({
     <div>
       {/*  SOLO renderizamos el bloque superior si realmente hay intro */}
       {!hideIntro && hasIntro ? (
-        <Container>
-          <div className="pageIntro">
-            <div className="hero">
-              <div className="hero-inner">
-                {title ? <h1 className="hero-title">{title}</h1> : null}
-                {subtitle ? <p className="hero-sub">{subtitle}</p> : null}
-                {badges?.length ? (
-                  <div className="hero-badges">
-                    {badges.map((b) => (
-                      <span className="badge" key={b}>
-                        {b}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
+  <Container>
+    <div className="pageIntro pageIntro--inner">
+      <div className="hero hero--page">
+        <div className="hero-inner">
+          {title ? <h1 className="hero-title">{title}</h1> : null}
+          {subtitle ? <p className="hero-sub">{subtitle}</p> : null}
+          {badges?.length ? (
+            <div className="hero-badges">
+              {badges.map((b) => (
+                <span className="badge" key={b}>{b}</span>
+              ))}
             </div>
-          </div>
-        </Container>
-      ) : null}
+          ) : null}
+        </div>
+      </div>
+    </div>
+  </Container>
+) : null}
+
 
       {/* Importante: no metas "section + Container" que pueda romper full-bleed
           Mantén el wrapper, pero el Home puede meter secciones full-bleed con 100vw. */}

@@ -221,14 +221,16 @@ a:hover{ text-decoration: underline; }
   color: var(--brand-muted);
 }
 
+/* NAVBAR (único, sin duplicados) */
 .navbar{
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(245, 247, 250, 0.78);
+  background: rgba(16, 32, 52, 0.92); /* azul sólido elegante */
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--brand-border);
+  border-bottom: none; /* ✅ quita la línea blanca */
 }
+
 .navbar-inner{
   display: flex;
   align-items: center;
@@ -236,83 +238,87 @@ a:hover{ text-decoration: underline; }
   padding: 12px 0;
   gap: 12px;
 }
+
+/* links desktop */
 .nav-links{
   display: none;
   gap: 14px;
   align-items: center;
 }
+
 @media (min-width: 920px){
   .nav-links{ display: flex; }
 }
+
 .nav-link{
+  color: rgba(255,255,255,0.9);
   padding: 8px 10px;
   border-radius: 10px;
-}
-.nav-link:hover{
-  background: rgba(12, 32, 54, 0.06);
   text-decoration: none;
 }
-.nav-cta{ display: flex; gap: 10px; align-items: center; }
 
-/* Estilos para el menú responsive */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background-color: var(--color-primary);
-  color: white;
+.nav-link:hover{
+  background: rgba(255,255,255,0.08);
+  text-decoration: none;
 }
 
-.navbar .menu-toggle {
+.nav-link.active{
+  background: rgba(255,255,255,0.12);
+}
+
+/* CTA desktop */
+.nav-cta{
   display: none;
-  background: none;
-  border: none;
-  color: white;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (min-width: 920px){
+  .nav-cta{ display: flex; }
+}
+
+/* Botón hamburguesa (solo móvil) */
+.menu-toggle{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.92);
+  border-radius: 12px;
+  padding: 10px;
   cursor: pointer;
 }
 
-.navbar .nav-links {
-  display: flex;
-  gap: 20px;
+@media (min-width: 920px){
+  .menu-toggle{ display: none; }
 }
 
-.navbar .nav-links.open {
-  display: block;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  background-color: var(--color-primary);
-  padding: 10px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.navbar .nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.navbar .nav-cta {
-  display: flex;
+/* Panel móvil */
+.nav-links.open{
+  display: grid;
   gap: 10px;
+  padding: 14px 0;
 }
 
-/* Estilos específicos para dispositivos móviles */
-@media (max-width: 768px) {
-  .navbar .menu-toggle {
+/* En móvil, el panel aparece debajo, dentro del mismo contenedor */
+@media (max-width: 919px){
+  .navbar-inner{
+    flex-wrap: wrap; /* ✅ permite que el panel baje */
+  }
+
+  .nav-links{
+    width: 100%;
+    display: none; /* cerrado por defecto */
+    border-top: 1px solid rgba(255,255,255,0.12);
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .nav-link{
     display: block;
-  }
-
-  .navbar .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .navbar .nav-cta {
-    display: none;
+    padding: 10px 12px;
+    border-radius: 12px;
   }
 }
 
@@ -728,6 +734,56 @@ a:hover{ text-decoration: underline; }
   pointer-events: none;
   z-index: 1;
 }
+
+/* Intro de páginas internas: que no sea gigante */
+.pageIntro--inner{
+  padding-top: 14px;      /* antes era mucho aire */
+  padding-bottom: 6px;
+}
+
+/* Header de páginas internas: compacto y proporcional */
+.hero--page{
+  max-width: 100%;
+  margin: 0;
+  padding: 20px 22px;           /* clave: padding contenido, no altura fija */
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(16, 32, 52, 0.96),
+      rgba(16, 32, 52, 0.88)
+    );
+}
+
+/* Título más cercano al tamaño del contenido */
+.hero--page .hero-title{
+  font-size: 28px;              /*  antes era muy grande */
+  line-height: 1.15;
+  margin: 0 0 6px 0;
+}
+
+/* Subtítulo compacto */
+.hero--page .hero-sub{
+  font-size: 15px;
+  max-width: 720px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Chips/badges sin inflar altura */
+.hero--page .hero-badges{
+  margin-top: 10px;
+  gap: 8px;
+}
+
+/* Reduce aire vertical del wrapper */
+.pageIntro--inner{
+  padding-top: 12px;
+  padding-bottom: 8px;
+}
+
+
 
 
 
