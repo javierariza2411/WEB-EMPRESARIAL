@@ -11,9 +11,10 @@ export function PageShell({
 
   return (
     <div>
-      <Container>
-        <div style={{ paddingTop: 18 }}>
-          {!hideIntro && hasIntro ? (
+      {/*  SOLO renderizamos el bloque superior si realmente hay intro */}
+      {!hideIntro && hasIntro ? (
+        <Container>
+          <div className="pageIntro">
             <div className="hero">
               <div className="hero-inner">
                 {title ? <h1 className="hero-title">{title}</h1> : null}
@@ -29,13 +30,16 @@ export function PageShell({
                 ) : null}
               </div>
             </div>
-          ) : null}
-        </div>
-      </Container>
+          </div>
+        </Container>
+      ) : null}
 
-      <div className="section">
+      {/* Importante: no metas "section + Container" que pueda romper full-bleed
+          Mantén el wrapper, pero el Home puede meter secciones full-bleed con 100vw. */}
+      <div className={`section ${hideIntro ? "section--flush" : ""}`}>
         <Container>{children}</Container>
       </div>
+
     </div>
   );
 }

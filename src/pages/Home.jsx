@@ -4,165 +4,87 @@ import { Card } from "../components/ui/Card";
 import { Button } from "../components/ui/Button";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { WhatsAppFloat } from "../components/ui/WhatsAppFloat";
-
 import { services } from "../data/services";
 import { projects } from "../data/projects";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import { useEffect, useRef } from "react";
-
-
-import "swiper/css";
-import "swiper/css/pagination";
-
-
 export function Home() {
-
-    const swiperRef = useRef(null);
-
-  useEffect(() => {
-    // intenta arrancar autoplay aunque el navegador/OS quiera reducir animaciones
-    const s = swiperRef.current;
-    if (!s) return;
-
-    // pequeño delay para asegurar que ya montó el DOM
-    const t = setTimeout(() => {
-      try {
-        s.update();
-        if (s.autoplay && typeof s.autoplay.start === "function") {
-          s.autoplay.start();
-        }
-      } catch (e) {
-        // no hacemos nada; solo evita que se rompa
-      }
-    }, 300);
-
-    return () => clearTimeout(t);
-  }, []);
-
-
   return (
     <PageShell hideIntro>
-      {/* HERO MODERNO (ÚNICO) */}
-      <section className="full-bleed" aria-label="Hero principal">
-        <div className="heroGuide">
-          <div className="heroGuide-overlay" aria-hidden="true" />
+      {/* HERO FULL BLEED */}
+      <section className="heroBleed" aria-label="Hero principal">
+        <div className="heroBleed-bg" aria-hidden="true" />
+        <div className="heroBleed-shade" aria-hidden="true" />
 
-          <div className="heroGuide-content">
-            <div className="heroGuide-inner">
-              <p className="heroGuide-kicker">FABRICACIÓN · SOLDADURA · MONTAJE</p>
+        <div className="heroBleed-inner">
+          <p className="heroBleed-kicker">FABRICACIÓN · SOLDADURA · MONTAJE</p>
 
-              <h1 className="heroGuide-title">METALMECÁNICA PARA LA CONSTRUCCIÓN</h1>
+          <h1 className="heroBleed-title">
+            METALMECÁNICA <span>PARA LA CONSTRUCCIÓN</span>
+          </h1>
 
-              <p className="heroGuide-sub">
-                Construimos soluciones en acero con seguridad, trazabilidad y entregas claras.
-              </p>
+          <p className="heroBleed-subtitle">
+            Soluciones en acero con enfoque industrial: seguridad, trazabilidad y
+            entregas claras.
+          </p>
 
-              <div className="heroGuide-actions" aria-label="Acciones principales">
-                <Link to="/cotizacion">
-                  <Button>Contáctanos ahora</Button>
-                </Link>
-                <Link to="/servicios">
-                  <Button variant="outline">Ver servicios</Button>
-                </Link>
-              </div>
-            </div>
+          <div className="heroBleed-actions">
+            <Link to="/cotizacion">
+              <Button>Solicitar cotización</Button>
+            </Link>
+            <Link to="/servicios">
+              <Button variant="outline">Ver servicios</Button>
+            </Link>
           </div>
+
+          <div className="heroBleed-badges" aria-label="Diferenciales">
+            <span className="heroBadge">Respuesta rápida</span>
+            <span className="heroBadge">Visita técnica</span>
+            <span className="heroBadge">Calidad y seguridad</span>
+          </div>
+        </div>
+
+        {/* DIVISOR CURVO (propio) */}
+        <div className="heroBleed-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 160" preserveAspectRatio="none">
+            <path
+              d="M0,120 C180,150 360,70 540,105 C720,140 900,165 1080,120 C1260,75 1350,105 1440,125 L1440,160 L0,160 Z"
+              fill="#ffffff"
+              opacity="1"
+            />
+          </svg>
         </div>
       </section>
 
-      {/* GALERÍA / SLIDER (separada del hero) */}
-<section
-  aria-label="Galería destacada"
-  style={{ marginTop: 64, opacity: 0.9 }}
->
-   <Swiper
-  modules={[Autoplay, Pagination]}
-  spaceBetween={24}
-  slidesPerView={1}
-  loop={true}
-  speed={800}
-  init={true}
-  onSwiper={(swiper) => {
-    swiperRef.current = swiper;
-
-    // Arranque inmediato también (por si useEffect demora)
-    setTimeout(() => {
-      try {
-        swiper.update();
-        swiper.autoplay?.start?.();
-      } catch (e) {}
-    }, 200);
-  }}
-  autoplay={{
-    delay: 800,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: false,
-  }}
-  pagination={{ clickable: true }}
-  style={{ marginBottom: 32, width: "100%" }}
->
-
-
-  <SwiperSlide>
-    <img
-      src="/brand/slider1.png"
-      alt="Proceso de soldadura industrial"
-      style={{ width: "100%", borderRadius: 10, display: "block" }}
-    />
-  </SwiperSlide>
-
-  <SwiperSlide>
-    <img
-      src="/brand/slider2.png"
-      alt="Fabricación de estructuras metálicas"
-      style={{ width: "100%", borderRadius: 10, display: "block" }}
-    />
-  </SwiperSlide>
-
-  <SwiperSlide>
-    <img
-      src="/brand/slider3.png"
-      alt="Montaje y mantenimiento industrial"
-      style={{ width: "100%", borderRadius: 10, display: "block" }}
-    />
-  </SwiperSlide>
-</Swiper>
-
-      </section>
-
-      {/* KPIs */}
-      <section aria-label="Fortalezas principales">
+      {/* CONTENIDO (normal) */}
+      <section aria-label="Fortalezas principales" style={{ marginTop: 28 }}>
         <div className="kpis">
           <Card className="kpi">
-            <strong>Respuesta rápida</strong>
+            <strong>Atención y diagnóstico</strong>
             <div className="muted" style={{ marginTop: 6 }}>
-              Atendemos solicitudes y coordinamos visita técnica según necesidad.
+              Entendemos tu necesidad y definimos la solución más adecuada.
             </div>
           </Card>
 
           <Card className="kpi">
-            <strong>Trabajo con proceso</strong>
+            <strong>Proceso claro</strong>
             <div className="muted" style={{ marginTop: 6 }}>
-              Levantamiento, propuesta, ejecución, entrega y soporte.
+              Levantamiento → propuesta → ejecución → entrega → soporte.
             </div>
           </Card>
 
           <Card className="kpi">
             <strong>Enfoque industrial</strong>
             <div className="muted" style={{ marginTop: 6 }}>
-              Soluciones pensadas para operación real, seguridad y durabilidad.
+              Materiales, soldadura y montaje pensados para operación real.
             </div>
           </Card>
         </div>
       </section>
 
-      {/* SERVICIOS */}
-      <section aria-label="Servicios principales" style={{ marginTop: 32 }}>
+      <section aria-label="Servicios" style={{ marginTop: 32 }}>
         <SectionTitle
           title="Servicios principales"
-          subtitle="Lo esencial: lo que más se cotiza y lo que mejor representará su marca al inicio."
+          subtitle="Lo esencial para iniciar con un portafolio claro y confiable."
         />
 
         <div className="grid-2">
@@ -185,11 +107,10 @@ export function Home() {
         </div>
       </section>
 
-      {/* PROYECTOS */}
-      <section aria-label="Proyectos destacados" style={{ marginTop: 32 }}>
+      <section aria-label="Proyectos" style={{ marginTop: 32 }}>
         <SectionTitle
           title="Proyectos destacados"
-          subtitle="Portafolio inicial con formato de casos. Aquí luego agregamos fotos y resultados."
+          subtitle="Casos resumidos. Luego agregamos fotos y resultados."
         />
 
         <div className="grid-2">
@@ -215,27 +136,26 @@ export function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section aria-label="Cotización" style={{ marginTop: 32 }}>
+      <section aria-label="CTA" style={{ marginTop: 32 }}>
         <Card className="kpi" style={{ padding: 18 }}>
-          <strong style={{ fontSize: 18 }}>¿Listo para cotizar?</strong>
+          <strong style={{ fontSize: 18 }}>¿Hacemos tu cotización?</strong>
           <div className="muted" style={{ marginTop: 6 }}>
-            Cuéntanos qué necesitas (servicio, ubicación y descripción). Te respondemos con los siguientes pasos.
+            Cuéntanos el servicio, ubicación y detalles. Te respondemos con los
+            siguientes pasos.
           </div>
 
           <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link to="/cotizacion">
               <Button>Solicitar cotización</Button>
             </Link>
-            <Link to="/contacto">
-              <Button variant="outline">Hacer una consulta</Button>
+            <Link to="/contactanos">
+              <Button variant="outline">Hablar con un asesor</Button>
             </Link>
           </div>
         </Card>
       </section>
 
-      {/* Botón flotante de WhatsApp */}
-      <WhatsAppFloat phone="573001234567" message="Hola, vengo desde la web y quiero una cotización." />
+      <WhatsAppFloat />
     </PageShell>
   );
 }
